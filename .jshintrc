@@ -1,6 +1,7 @@
 {
-  "strict": false,
+  "strict": true,
   "unused": false,
+  "eqeqeq": true,
   "globals": {
     "ContactManager": false,
     "Backbone": false,
