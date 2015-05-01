@@ -10,7 +10,7 @@ let App = React.createClass({
       <section>
         <header className="bs-header">
           <div className="container">
-            <h1>Contact Manager<small>Simple React and Flux example application</small></h1>
+            <h1 className="text-center">Contact Manager <small>Built with Flux + React</small></h1>
           </div>
         </header>
         <ContactCreator />
