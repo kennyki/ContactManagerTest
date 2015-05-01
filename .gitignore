@@ -1,6 +1,5 @@
-vendor
-.idea/*
-node_modules/*
-app/css/main.css
-app/css/*.map
-build
+/bower_components/
+/dist/
+/node_modules/
+.editorconfig
+**/*.log
