@@ -12,9 +12,7 @@ const Col = Bootstrap.Col;
 let ContactList = React.createClass({
 
   getInitialState() {
-    return {
-      contacts: []
-    }
+    return ContactStore.getAll();
   },
 
   _onChange() {
@@ -50,7 +48,7 @@ let ContactList = React.createClass({
       <Grid>
         <Row>
           {contacts.map(contact =>
-            <Col sm={4} md={3}>
+            <Col sm={6} md={4}>
               <Contact contact={contact} />
             </Col>
           )}

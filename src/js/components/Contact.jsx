@@ -6,6 +6,9 @@ const Bootstrap = require('react-bootstrap');
 const ButtonToolbar = Bootstrap.ButtonToolbar;
 const Button = Bootstrap.Button;
 const Glyphicon = Bootstrap.Glyphicon;
+const Grid = Bootstrap.Grid;
+const Row = Bootstrap.Row;
+const Col = Bootstrap.Col;
 
 let Contact = React.createClass({
 
@@ -34,23 +37,28 @@ let Contact = React.createClass({
     let emailLink = 'mailto:' + contact.email
 
     return (
-      <div className="thumbnail">
-        <img src={avatar} />
-        <div className="caption">
-          <h3>{contact.name}</h3>
+      <div className="media">
+        <div className="media-left">
+          <img className="media-object" src={avatar} alt={contact.name} />
+        </div>
+        <div className="media-body">
+          <h3 className="media-heading">{contact.name}</h3>
           <p>
             <ButtonToolbar>
-              <Button bsStyle='link'><Glyphicon glyph='pencil' /></Button>
-              <Button bsStyle='link'><Glyphicon glyph='trash' /></Button>
+              <Button bsStyle="link" bsSize="xsmall" title="Edit"><Glyphicon glyph='pencil' /></Button>
+              <Button bsStyle="link" bsSize="xsmall" title="Delete"><Glyphicon glyph='trash' /></Button>
             </ButtonToolbar>
           </p>
           <p>
-            <Glyphicon glyph='earphone' /> <a className="btn btn-link" href={phoneLink}>{contact.phone}</a>
+            <div><Glyphicon glyph='earphone' /> Phone Number:</div>
+            <div><a href={phoneLink}>{contact.phone}</a></div>
           </p>
           <p>
-            <Glyphicon glyph='envelope' /> <a className="btn btn-link" href={emailLink}>{contact.email}</a>
+            <div><Glyphicon glyph='envelope' /> Email:</div>
+            <div><a href={emailLink}>{contact.email}</a></div>
           </p>
         </div>
+        <hr />
       </div>
     );
   }
