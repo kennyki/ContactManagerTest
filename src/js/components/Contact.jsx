@@ -13,6 +13,8 @@ const Row = Bootstrap.Row;
 const Col = Bootstrap.Col;
 const Panel = Bootstrap.Panel;
 const ModalTrigger = Bootstrap.ModalTrigger;
+const OverlayTrigger = Bootstrap.OverlayTrigger;
+const Tooltip = Bootstrap.Tooltip;
 
 let Contact = React.createClass({
 
@@ -42,10 +44,14 @@ let Contact = React.createClass({
             <p>
               <ButtonToolbar>
                 <ModalTrigger modal={<ContactEditor contact={contact} />}>
-                  <Button bsStyle="link" bsSize="small" title="Edit"><Glyphicon glyph='pencil' /></Button>
+                  <OverlayTrigger placement='bottom' overlay={<Tooltip>Edit this contact</Tooltip>}>
+                    <Button bsStyle="link" bsSize="small" title="Edit"><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
                 </ModalTrigger>
                 <ModalTrigger modal={<ContactRemover contact={contact} />}>
-                  <Button bsStyle="link" bsSize="small" title="Delete"><Glyphicon glyph='trash' className="text-danger" /></Button>
+                  <OverlayTrigger placement='bottom' overlay={<Tooltip>Remove this contact</Tooltip>}>
+                    <Button bsStyle="link" bsSize="small" title="Remove"><Glyphicon glyph='trash' className="text-danger" /></Button>
+                  </OverlayTrigger>
                 </ModalTrigger>
               </ButtonToolbar>
             </p>
@@ -54,11 +60,19 @@ let Contact = React.createClass({
         <Row>
           <Col xs={4}>
             <div><Glyphicon glyph='earphone' /> Phone:</div>
-            <div><a href={phoneLink}>{contact.phone}</a></div>
+            <div>
+              <OverlayTrigger placement='top' overlay={<Tooltip>Call this contact</Tooltip>}>
+                <a href={phoneLink}>{contact.phone}</a>
+              </OverlayTrigger>
+            </div>
           </Col>
           <Col xs={8}>
             <div><Glyphicon glyph='envelope' /> Email:</div>
-          <div><a href={emailLink}>{contact.email}</a></div>
+            <div>
+              <OverlayTrigger placement='top' overlay={<Tooltip>Email this contact</Tooltip>}>
+                <a href={emailLink}>{contact.email}</a>
+              </OverlayTrigger>
+            </div>
           </Col>
         </Row>
       </Panel>
