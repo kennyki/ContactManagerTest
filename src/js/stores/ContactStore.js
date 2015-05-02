@@ -59,6 +59,8 @@ _data.forEach(setRandomAvatar);
 // function name should map to the action type
 let handlers = {
 
+  // TODO: data validation
+
   ADD_CONTACT(contact) {
     contact.id = (new Date()).getTime();
     setRandomAvatar(contact);
@@ -67,17 +69,27 @@ let handlers = {
   },
 
   EDIT_CONTACT(_contact) {
-    if (!_contact.id) {
-      // TODO: is this the right way to express error?
-      throw 'Contact is non-existent';
-    }
-
     _data.some(function(contact, i) {
       if (contact.id === _contact.id) {
         _data[i] = _contact;
         return true;
       }
     });
+  },
+
+  REMOVE_CONTACT(contactId) {
+    var removeAt = -1;
+
+    _data.some(function(contact, i) {
+      if (contact.id === contactId) {
+        removeAt = i;
+        return true;
+      }
+    });
+
+    if (removeAt !== -1) {
+      _data.splice(removeAt, 1);
+    }
   }
 
 };

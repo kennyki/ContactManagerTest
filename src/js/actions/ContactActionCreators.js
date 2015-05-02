@@ -15,6 +15,13 @@ module.exports = {
       type: Constants.ActionTypes.EDIT_CONTACT,
       data: contact
     });
+  },
+
+  remove(contactId) {
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.REMOVE_CONTACT,
+      data: contactId
+    });
   }
 
 };

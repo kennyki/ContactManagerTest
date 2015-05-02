@@ -3,6 +3,7 @@ const assign = require('object-assign');
 
 const ActionCreator = require('../actions/ContactActionCreators');
 const ContactEditor = require('./ContactEditor.jsx');
+const ContactRemover = require('./ContactRemover.jsx');
 
 const Bootstrap = require('react-bootstrap');
 const ButtonToolbar = Bootstrap.ButtonToolbar;
@@ -31,7 +32,7 @@ let Contact = React.createClass({
     let emailLink = 'mailto:' + contact.email
 
     return (
-      <Panel className="modal-container">
+      <Panel>
         <p className="media">
           <div className="media-left">
             <img className="media-object" src={contact.avatar} alt={contact.name} />
@@ -40,10 +41,12 @@ let Contact = React.createClass({
             <h3 className="media-heading">{contact.name}</h3>
             <p>
               <ButtonToolbar>
-                <ModalTrigger modal={<ContactEditor container={this} contact={contact} />} container={this}>
+                <ModalTrigger modal={<ContactEditor contact={contact} />}>
                   <Button bsStyle="link" bsSize="small" title="Edit"><Glyphicon glyph='pencil' /></Button>
                 </ModalTrigger>
-                <Button bsStyle="link" bsSize="small" title="Delete"><Glyphicon glyph='trash' /></Button>
+                <ModalTrigger modal={<ContactRemover contact={contact} />}>
+                  <Button bsStyle="link" bsSize="small" title="Delete"><Glyphicon glyph='trash' /></Button>
+                </ModalTrigger>
               </ButtonToolbar>
             </p>
           </div>

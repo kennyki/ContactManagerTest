@@ -50,7 +50,7 @@ let ContactEditor = React.createClass({
     let shouldDisable = !this.state.isFilled;
 
     return (
-      <Modal animation={false}>
+      <Modal title="Edit Contact" onRequestHide={this.props.onRequestHide}>
         <form onSubmit={this.handleEditContact}>
           <div className="modal-body">
             <Input type='text' label="Full name" tabIndex="11" autoFocus 

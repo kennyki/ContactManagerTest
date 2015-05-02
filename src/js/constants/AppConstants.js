@@ -4,7 +4,8 @@ module.exports = {
 
   ActionTypes: keyMirror({
     ADD_CONTACT: null,
-    EDIT_CONTACT: null
+    EDIT_CONTACT: null,
+    REMOVE_CONTACT: null
   }),
 
   ActionSources: keyMirror({
