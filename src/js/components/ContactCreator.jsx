@@ -49,19 +49,19 @@ let ContactCreator = React.createClass({
         <Well bsSize="small">
           <Row>
             <form onSubmit={this.handleAddContact}>
-              <Col xs={4}>
+              <Col sm={4}>
                 <Input type='text' standalone label="Full name" tabIndex="1" 
                   valueLink={this.linkState('contact.name', this.onContactChanged)} />
               </Col>
-              <Col xs={3}>
+              <Col sm={3}>
                 <Input type='email' standalone label="Email address" tabIndex="2" 
                   valueLink={this.linkState('contact.email', this.onContactChanged)} />
               </Col>
-              <Col xs={3}>
+              <Col sm={3}>
                 <Input type='text' standalone label="Telephone number" tabIndex="3" 
                   valueLink={this.linkState('contact.phone', this.onContactChanged)} />
               </Col>
-              <Col xs={2}>
+              <Col sm={2}>
                 <label>&nbsp;</label>
                 <Button bsStyle='primary' block disabled={shouldDisable} tabIndex="4" type="submit">
                   <Glyphicon glyph='plus' /> Add

@@ -8,9 +8,9 @@ let App = React.createClass({
   render() {
     return (
       <section>
-        <header className="bs-header">
+        <header>
           <div className="container">
-            <h1 className="text-center">Contact Manager <small>Built with Flux + React</small></h1>
+            <h1 className="text-center text-bright">Contact Manager <small>Built with Flux + React</small></h1>
           </div>
         </header>
         <ContactCreator />

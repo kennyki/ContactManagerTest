@@ -32,7 +32,7 @@ let Contact = React.createClass({
     let emailLink = 'mailto:' + contact.email
 
     return (
-      <Panel>
+      <Panel className="contact">
         <p className="media">
           <div className="media-left">
             <img className="media-object" src={contact.avatar} alt={contact.name} />
@@ -45,7 +45,7 @@ let Contact = React.createClass({
                   <Button bsStyle="link" bsSize="small" title="Edit"><Glyphicon glyph='pencil' /></Button>
                 </ModalTrigger>
                 <ModalTrigger modal={<ContactRemover contact={contact} />}>
-                  <Button bsStyle="link" bsSize="small" title="Delete"><Glyphicon glyph='trash' /></Button>
+                  <Button bsStyle="link" bsSize="small" title="Delete"><Glyphicon glyph='trash' className="text-danger" /></Button>
                 </ModalTrigger>
               </ButtonToolbar>
             </p>
