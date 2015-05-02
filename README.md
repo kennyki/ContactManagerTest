@@ -1,9 +1,35 @@
 
-# ContactManager (contactmanager)
+# ContactManagerTest
 
-> Contact Manager
+> Re-architectured with [Flux](https://facebook.github.io/flux/docs/overview.html#content) + [React](https://facebook.github.io/react/)
 
-## Running your project
+## Description
+
+Adopting from the Flux pattern, it has:
+
+- A **Dispatcher** composited from the official Dispatcher.
+- An **Action Creator** that abstracts actions dispatching from the components.
+- A **Store** to respond to the actions, perform CRUD on the actual contacts data and emit change events.
+- A set of **Components** (in their respective hierarchy):
+    - App
+        - ContactCreator
+        - ContactList
+            - Contact
+            - ContactEditor
+            - ContactRemover
+
+## UI/UX Changes
+
+Some differences with the [original implementation](http://dmytroyarmak.github.io/backbone-contact-manager):
+
+- *Slimmer page header* for larger view area.
+- *Higher contrast* between background and contact cards.
+- *Easier access* to contact creation.
+- *Better positioning consistency* of the action buttons on contact cards.
+- *Pop up to edit contact* to provide better overall context.
+- *Prompt* before deletion.
+
+## Running the project
 
 The generated project includes a live-reloading static server on port `8080` (you can change the port in the `gulpfile.js` config), which will build, launch, and rebuild the app whenever you change application code. To start the server, run:
 
@@ -15,6 +41,18 @@ If you prefer to just build without the live reload and build-on-each-change wat
 
 ```bash
 $ npm run build
+```
+
+To peek at a release, run:
+
+```bash
+$ npm run peek-release
+```
+
+To release and deploy to gh-pages, run:
+
+```bash
+$ npm run release
 ```
 
 

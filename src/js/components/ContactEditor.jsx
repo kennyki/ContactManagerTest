@@ -12,6 +12,8 @@ const ButtonToolbar = Bootstrap.ButtonToolbar;
 const Button = Bootstrap.Button;
 const Input = Bootstrap.Input;
 const Glyphicon = Bootstrap.Glyphicon;
+const Row = Bootstrap.Row;
+const Col = Bootstrap.Col;
 
 let ContactEditor = React.createClass({
 
@@ -48,18 +50,26 @@ let ContactEditor = React.createClass({
 
   render() {
     let shouldDisable = !this.state.isFilled;
+    let {contact} = this.state;
 
     return (
       <Modal title="Edit Contact" onRequestHide={this.props.onRequestHide}>
         <form onSubmit={this.handleEditContact}>
-          <div className="modal-body">
-            <Input type='text' label="Full name" tabIndex="11" autoFocus 
-              valueLink={this.linkState('contact.name', this.onContactChanged)} />
-            <Input type='email' label="Email address" tabIndex="12" 
-              valueLink={this.linkState('contact.email', this.onContactChanged)} />
-            <Input type='text' label="Telephone number" tabIndex="13" 
-              valueLink={this.linkState('contact.phone', this.onContactChanged)} />
-          </div>
+          <Row className="modal-body">
+            <Col xs={4}>
+              <div className="thumbnail">
+                <img src={contact.avatar} alt={contact.name} />
+              </div>
+            </Col>
+            <Col xs={8}>
+              <Input type='text' label="Full name" tabIndex="11" autoFocus 
+                valueLink={this.linkState('contact.name', this.onContactChanged)} />
+              <Input type='email' label="Email address" tabIndex="12" 
+                valueLink={this.linkState('contact.email', this.onContactChanged)} />
+              <Input type='text' label="Telephone number" tabIndex="13" 
+                valueLink={this.linkState('contact.phone', this.onContactChanged)} />
+            </Col>
+          </Row>
           <div className="modal-footer">
             <ButtonToolbar>
               <Button tabIndex="15" type="button" onClick={this.props.onRequestHide}>
