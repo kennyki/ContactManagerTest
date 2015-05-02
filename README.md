@@ -28,6 +28,7 @@ Some differences with the [original implementation](http://dmytroyarmak.github.i
 - *Better positioning consistency* of the action buttons on contact cards.
 - *Pop up to edit contact* to provide better overall context.
 - *Prompt* before deletion.
+- *Better contact cards alignment* with [Masonry](http://masonry.desandro.com/).
 
 ## Running the project
 
