@@ -3,7 +3,8 @@ const keyMirror = require('react/lib/keyMirror');
 module.exports = {
 
   ActionTypes: keyMirror({
-    ADD_CONTACT: null
+    ADD_CONTACT: null,
+    EDIT_CONTACT: null
   }),
 
   ActionSources: keyMirror({

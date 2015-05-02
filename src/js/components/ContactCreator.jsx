@@ -1,12 +1,13 @@
 const React = require('react');
 const assign = require('object-assign');
 
-const DeepLinkedStateMixin = require('../addons/DeepLinkedStateMixin');
+const DeepLinkedStateMixin = require('../mixins/DeepLinkedStateMixin');
+const ContactEditorMixin = require('../mixins/ContactEditorMixin');
 const ActionCreator = require('../actions/ContactActionCreators');
 
 const Bootstrap = require('react-bootstrap');
 const Button = Bootstrap.Button;
-const Panel = Bootstrap.Panel;
+const Well = Bootstrap.Well;
 const Grid = Bootstrap.Grid;
 const Row = Bootstrap.Row;
 const Col = Bootstrap.Col;
@@ -15,12 +16,12 @@ const Glyphicon = Bootstrap.Glyphicon;
 
 let ContactCreator = React.createClass({
 
-  mixins: [DeepLinkedStateMixin],
+  mixins: [DeepLinkedStateMixin, ContactEditorMixin],
 
   getInitialState() {
     return {
       isFilled: false,
-      newContact: {
+      contact: {
         name: '',
         email: '',
         phone: ''
@@ -31,30 +32,13 @@ let ContactCreator = React.createClass({
   handleAddContact(e) {
     e.preventDefault();
 
-    let isFilled = this.isFilled();
-
-    if (!isFilled) {
+    if (!this.isFilled()) {
       return;
     }
 
-    let newContact = assign({}, this.state.newContact);
+    let contact = assign({}, this.state.contact);
 
-    ActionCreator.add(newContact);
-  },
-
-  onContactChanged() {
-    this.state.isFilled = this.isFilled();
-  },
-
-  isFilled() {
-    let newContact = this.state.newContact;
-    let hasEmpty = Object.keys(newContact).some(function(prop) {
-      if (!newContact[prop]) {
-        return true;
-      }
-    });
-
-    return !hasEmpty;
+    ActionCreator.add(contact);
   },
 
   render() {
@@ -62,30 +46,30 @@ let ContactCreator = React.createClass({
 
     return (
       <Grid>
-        <Panel>
+        <Well bsSize="small">
           <Row>
             <form onSubmit={this.handleAddContact}>
               <Col xs={4}>
-                <Input type='text' standalone label="Full name" tabindex="1" 
-                  valueLink={this.linkState('newContact.name', this.onContactChanged)} />
+                <Input type='text' standalone label="Full name" tabIndex="1" 
+                  valueLink={this.linkState('contact.name', this.onContactChanged)} />
               </Col>
               <Col xs={3}>
-                <Input type='email' standalone label="Email address" tabindex="2" 
-                  valueLink={this.linkState('newContact.email', this.onContactChanged)} />
+                <Input type='email' standalone label="Email address" tabIndex="2" 
+                  valueLink={this.linkState('contact.email', this.onContactChanged)} />
               </Col>
               <Col xs={3}>
-                <Input type='text' standalone label="Telephone number" tabindex="3" 
-                  valueLink={this.linkState('newContact.phone', this.onContactChanged)} />
+                <Input type='text' standalone label="Telephone number" tabIndex="3" 
+                  valueLink={this.linkState('contact.phone', this.onContactChanged)} />
               </Col>
               <Col xs={2}>
                 <label>&nbsp;</label>
-                <Button bsStyle='primary' block disabled={shouldDisable} tabindex="4" type="submit">
+                <Button bsStyle='primary' block disabled={shouldDisable} tabIndex="4" type="submit">
                   <Glyphicon glyph='plus' /> Add
                 </Button>
               </Col>
             </form>
           </Row>
-        </Panel>
+        </Well>
       </Grid>
     );
   }

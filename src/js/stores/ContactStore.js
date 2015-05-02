@@ -44,12 +44,40 @@ let _data = [
   }
 ];
 
+function setRandomAvatar(contact) {
+  // formula:
+  // Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+  var randNum = Math.floor(Math.random() * 15) + 1;
+
+  contact.avatar = '/faces/' + randNum + '.jpg';
+}
+
+// init with random avatar
+_data.forEach(setRandomAvatar);
+
 // add private functions to modify data
 // function name should map to the action type
 let handlers = {
 
   ADD_CONTACT(contact) {
-    _data.push(contact);
+    contact.id = (new Date()).getTime();
+    setRandomAvatar(contact);
+    // put in front
+    _data.unshift(contact);
+  },
+
+  EDIT_CONTACT(_contact) {
+    if (!_contact.id) {
+      // TODO: is this the right way to express error?
+      throw 'Contact is non-existent';
+    }
+
+    _data.some(function(contact, i) {
+      if (contact.id === _contact.id) {
+        _data[i] = _contact;
+        return true;
+      }
+    });
   }
 
 };

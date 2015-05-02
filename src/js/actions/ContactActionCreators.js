@@ -8,6 +8,13 @@ module.exports = {
       type: Constants.ActionTypes.ADD_CONTACT,
       data: contact
     });
+  },
+
+  update(contact) {
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.EDIT_CONTACT,
+      data: contact
+    });
   }
 
 };
