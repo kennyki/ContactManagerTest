@@ -27485,7 +27485,7 @@ function setRandomAvatar(contact) {
   // Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
   var randNum = Math.floor(Math.random() * 15) + 1;
 
-  contact.avatar = '/faces/' + randNum + '.jpg';
+  contact.avatar = 'faces/' + randNum + '.jpg';
 }
 
 // init with random avatar
