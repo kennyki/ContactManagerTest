@@ -26,8 +26,8 @@ let handlers = {
   ADD_CONTACT(contact) {
     contact.id = (new Date()).getTime();
     setRandomAvatar(contact);
-    // put in front
-    _data.unshift(contact);
+    // put at the back makes more sense
+    _data.push(contact);
   },
 
   EDIT_CONTACT(_contact) {

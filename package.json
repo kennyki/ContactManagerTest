@@ -44,6 +44,8 @@
     ]
   },
   "dependencies": {
+    "imagesloaded": "^3.1.8",
+    "masonry-layout": "^3.3.0",
     "react-bootstrap": "^0.21.1"
   }
 }
